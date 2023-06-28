@@ -1,0 +1,141 @@
+swagger: '2.0'
+info:
+  title: API Magazine clothes
+  description: Web-service clothes
+  version: 1.0.0
+
+paths:
+  /clothes:
+    post:
+      summary: create new clothes
+      tags: [Clothes]
+      parameters:
+        - name: body
+          in: body
+          type: object
+          example: { 
+            title: "Велюровий костюм",
+            description: "-",
+            size: "/ M / L",
+            price: 432,
+            }
+      responses:
+        200:
+          schema:
+            type: object
+            example: { status: 200, data: [] }
+    get:
+      summary: get clothes
+      tags: [Clothes]
+      parameters:
+        - in: query
+          name: id
+          type: string
+          required: false
+      responses:
+        200:
+          schema:
+            type: object
+            example: { status: 200, data: [] }
+    delete:
+      summary: delete clothes
+      tags: [Clothes]
+      parameters:
+        - in: query
+          name: id
+          type: string
+          required: false
+      responses:
+        200:
+          schema:
+            type: object
+            example: { status: 200, data: [] }  
+    put:
+      summary: put clothes
+      tags: [Clothes]
+      parameters:
+        - in: query
+          name: id
+          type: string
+          required: false
+        - name: body
+          in: body
+          type: object
+          example: { 
+            description: "Superman",
+            }
+      responses:
+        200:
+          schema:
+            type: object
+            example: { status: 200, data: [] }
+  /register:
+    post:
+      summary: create new user
+      tags: [Users]
+      parameters:
+        - name: body
+          in: body
+          type: object
+          example: { 
+              name: "Danny",
+              surname: "Subdanny",
+              email: "subdanny@gmail.com",
+              password: "08121982",
+              }
+      responses:
+        200:
+          schema:
+            type: object
+            example: { status: 200, data: [] }
+  /login:
+    post:
+      summary: login user
+      tags: [Users]
+      parameters:
+        - name: body
+          in: body
+          type: object
+          example: {
+              email: "subdanny@gmail.com",
+              password: "08121982",
+              }
+      responses:
+        200:
+          schema:
+            type: object
+            example: { status: 200, data: [] }
+  /orders:
+    get:
+      summary: get orders
+      tags: [Orders]
+      parameters:
+        - name: x-access-token
+          in: header
+          description: token to be passed as a header
+          required: true
+          type: string
+      responses:
+        200:
+          schema:
+            type: object
+            example: { status: 200, data: [] }
+    post:
+      summary: create orders
+      tags: [Orders]
+      parameters:
+        - name: x-access-token
+          in: header
+          description: token to be passed as a header
+          required: true
+          type: string
+        - name: arrClothesId
+          in: body
+          type: array
+          items: 
+            type: integer 
+      responses:
+        200:
+          schema:
+            type: object
+            example: { status: 200, data: [] }
